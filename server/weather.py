@@ -51,7 +51,7 @@ WEATHER_CATEGORY_MAP = {
 
 TIMEZONE = "America/Vancouver"
 LATITUDE = 49.2593
-LONGITUDE = 123.2475
+LONGITUDE = -123.2475
 CACHE_BUCKET_MINUTES = 15
 
 # Setup the Open-Meteo API client with cache and retry on error
