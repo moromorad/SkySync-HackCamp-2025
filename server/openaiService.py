@@ -34,20 +34,32 @@ def getSongParams(weather_data):
 
 
 def maketitle(song_params, weather_data):
-    title_prompt = f"You are a helpful assistant that generates a title for a playlist based on the song parameters and the weather data. The song parameters are {song_params}. The weather data is {weather_data}. Generate a title for a song based on the song parameters and the weather data. The title should be a single word or phrase that captures the mood and energy of the song. The title should be 1-3 words long. parameters are valence, energy, and dancability and are defined as float values from 0.00 to 1.00. {dancability}, {energy}, {valence}"
+    title_prompt = (
+        "You are a helpful assistant that names Spotify playlists. "
+        f"The song parameters are {song_params}. The weather data is {weather_data}. "
+        "Create a concise playlist title (1-3 words) that captures the mood and energy. "
+        "Return only the title text with no quotes."
+    )
     response = client.responses.create(
         model="gpt-5",
         input=title_prompt,
     )
-    return response.output_text
+    return response.output_text.strip()
 
-def makedescription(song_params, weather_data):
-    description = f"You are a helpful assistant that generates a title for a playlist based on the song parameters and the weather data. The song parameters are {song_params}. The weather data is {weather_data}. Generate a description for a playlist based on the song parameters and the weather data. The description should be a sentence that captures the mood and energy of the playlist. parameters are valence, energy, and dancability and are defined as float values from 0.00 to 1.00. {dancability}, {energy}, {valence}"
+def makedescription(song_params, weather_data, title):
+    description_prompt = (
+        "You are a helpful assistant that writes Spotify playlist descriptions. "
+        f"The song parameters are {song_params}. The weather data is {weather_data}. "
+        f"The playlist title is '{title}'. "
+        "Write a single sentence (12-25 words) describing the playlist's vibe and setting. "
+        "Connect naturally to the provided title without repeating it verbatim. "
+        "Return only the description with no surrounding quotes."
+    )
     response = client.responses.create(
         model="gpt-5",
-        input=description,
+        input=description_prompt,
     )
-    return response.output_text
+    return response.output_text.strip()
 
 
 

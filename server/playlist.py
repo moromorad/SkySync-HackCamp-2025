@@ -51,7 +51,7 @@ def make_new_playlist(weather_state):
     track_URIs = [f"spotify:track:{tid["ori_id"]}" for tid in filtered_track_ids]
     print(track_URIs)
     sp.playlist_add_items(new_playlist_id, track_URIs)
-    playback(new_playlist_id)
+    #playback(new_playlist_id)
 
 
 

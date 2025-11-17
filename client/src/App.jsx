@@ -140,12 +140,6 @@ function App() {
       </div>
     )}
 
-    <p className="ready-text">Your personalized playlist is ready!</p>
-
-    <button className="spotify-open-btn">
-      Open Playlist
-    </button>
-
   </div>
 )}
 
